@@ -449,7 +449,16 @@ typedef enum {
     MM_CAMERA_PARM_FRAME_RESOLUTION,
     MM_CAMERA_PARM_RAW_SNAPSHOT_FMT,
     MM_CAMERA_PARM_FACIAL_FEATURE_INFO,
+<<<<<<< HEAD
     MM_CAMERA_PARM_MOBICAT,
+=======
+    MM_CAMERA_PARM_CAF_LOCK_CANCEL,
+    MM_CAMERA_PARM_ZSL_FLASH,
+#ifdef FAST_AF
+    MM_CAMERA_PARM_CAF_TYPE,
+#endif
+    MM_CAMERA_PARM_LUX_IDX,
+>>>>>>> a442724... camera: add Morpho DNR support
     MM_CAMERA_PARM_MAX
 } mm_camera_parm_type_t;
 
@@ -596,10 +605,17 @@ typedef enum {
   CAMERA_GET_PP_MASK, /* get post-processing mask */
   CAMERA_DO_PP_WNR,   /* do post-process WNR */
   CAMERA_GET_PARM_HDR,
+<<<<<<< HEAD
   CAMERA_SEND_PP_PIPELINE_CMD, /* send offline pp cmd */
   CAMERA_SET_BUNDLE, /* set stream bundle */
   CAMERA_ENABLE_MOBICAT,
   CAMERA_GET_PARM_MOBICAT,
+=======
+#ifdef FAST_AF
+  CAMERA_SET_PARM_CAF_TYPE,
+#endif
+  CAMERA_GET_PARM_LUX_IDX,
+>>>>>>> a442724... camera: add Morpho DNR support
   CAMERA_CTRL_PARM_MAX
 } cam_ctrl_type;
 
