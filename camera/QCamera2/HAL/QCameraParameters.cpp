@@ -1097,6 +1097,16 @@ int32_t QCameraParameters::setPreviewSize(const QCameraParameters& params)
     params.getPreviewSize(&width, &height);
     ALOGV("Requested preview size %d x %d", width, height);
 
+    // Set preview size to video size for 4K
+    if (getRecordingHintValue()) {
+        int video_width, video_height;
+        params.getVideoSize(&video_width, &video_height);
+        if ((video_width > 1920) && (video_height > 1080)) {
+            width = video_width;
+            height = video_height;
+        }
+    }
+
     // Validate the preview size
     for (size_t i = 0; i < m_pCapability->preview_sizes_tbl_cnt; ++i) {
         if (width ==  m_pCapability->preview_sizes_tbl[i].width
@@ -4355,6 +4365,66 @@ int32_t QCameraParameters::initDefaultParameters()
  *              NO_ERROR  -- success
  *              none-zero failure code
  *==========================================================================*/
+#define CAM0_PIC_TBL_SIZE 21
+static cam_dimension_t new_pic_sizes_cam0[CAM0_PIC_TBL_SIZE] = {
+    {4208, 3120},
+    {4160, 3120},
+    {4160, 2340},
+    {4000, 3000},
+    {4096, 2160},
+    {3200, 2400},
+    {3200, 1800},
+    {2592, 1944},
+    {2048, 1536},
+    {1920, 1080},
+    {1600, 1200},
+    {1280, 960},
+    {1280, 768},
+    {1280, 720},
+    {1024, 768},
+    {800, 600},
+    {800, 480},
+    {720, 480},
+    {640, 480},
+    {352, 288},
+    {320, 240}
+};
+
+#define CAM0_VID_TBL_SIZE 14
+static cam_dimension_t new_vid_sizes_cam0[CAM0_VID_TBL_SIZE] = {
+    {4096, 2160},
+    {3840, 2160},
+    {1920, 1080},
+    {1280, 960},
+    {1280, 720},
+    {864, 480},
+    {800, 480},
+    {720, 480},
+    {640, 480},
+    {480, 320},
+    {352, 288},
+    {320, 240},
+    {176, 144},
+    {160, 120}
+};
+
+#define CAM0_PRVW_TBL_SIZE 13
+static cam_dimension_t new_prvw_sizes_cam0[CAM0_PRVW_TBL_SIZE] = {
+    {4096, 2160},
+    {3840, 2160},
+    {1920, 1080},
+    {1440, 1080},
+    {1280, 960},
+    {1280, 720},
+    {768, 432},
+    {720, 480},
+    {640, 480},
+    {576, 432},
+    {384, 288},
+    {352, 288},
+    {320, 240}
+};
+
 int32_t QCameraParameters::init(cam_capability_t *capabilities,
                                 mm_camera_vtbl_t *mmOps,
                                 QCameraAdjustFPS *adjustFPS,
@@ -4369,6 +4439,20 @@ int32_t QCameraParameters::init(cam_capability_t *capabilities,
     m_pCamOpsTbl = mmOps;
     m_AdjustFPS = adjustFPS;
     m_pTorch = torch;
+
+    if (m_pCapability->position == CAM_POSITION_BACK) {
+        for (i = 0; i < CAM0_PIC_TBL_SIZE; i++)
+            m_pCapability->picture_sizes_tbl[i] = new_pic_sizes_cam0[i];
+        m_pCapability->picture_sizes_tbl_cnt = CAM0_PIC_TBL_SIZE;
+
+        for (i = 0; i < CAM0_VID_TBL_SIZE; i++)
+            m_pCapability->video_sizes_tbl[i] = new_vid_sizes_cam0[i];
+        m_pCapability->video_sizes_tbl_cnt = CAM0_VID_TBL_SIZE;
+
+        for (i = 0; i < CAM0_PRVW_TBL_SIZE; i++)
+            m_pCapability->preview_sizes_tbl[i] = new_prvw_sizes_cam0[i];
+        m_pCapability->preview_sizes_tbl_cnt = CAM0_PRVW_TBL_SIZE;
+    }
 
     //Allocate Set Param Buffer
     m_pParamHeap = new QCameraHeapMemory(QCAMERA_ION_USE_CACHE);
