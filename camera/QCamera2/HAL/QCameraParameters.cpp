@@ -5274,6 +5274,7 @@ int32_t  QCameraParameters::setExposureTime(const char *expTimeStr)
             (expTimeUs >= min_exp_time && expTimeUs <= max_exp_time)) {
             mExposureTime = expTimeUs;
             ALOGD("%s, exposure time: %d", __func__, expTimeUs);
+            
             updateParamEntry(KEY_QC_EXPOSURE_TIME, expTimeStr);
             return AddSetParmEntryToBatch(m_pParamBuf,
                                           CAM_INTF_PARM_EXPOSURE_TIME,
