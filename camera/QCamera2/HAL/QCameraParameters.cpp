@@ -2903,6 +2903,17 @@ int32_t QCameraParameters::setSceneMode(const QCameraParameters& params)
                 ((prev_str != NULL) && (strcmp(prev_str, SCENE_MODE_HDR) == 0))) {
                 ALOGD("%s: scene mode changed between HDR and non-HDR, need restart", __func__);
                 m_bNeedRestart = true;
+                // set if hdr 1x image is needed
+                const char *need_hdr_1x = params.get(KEY_QC_HDR_NEED_1X);
+                if (need_hdr_1x != NULL) {
+                    m_bHDR1xFrameEnabled = false;
+                    updateParamEntry(KEY_QC_HDR_NEED_1X, need_hdr_1x);
+                }
+
+                AddSetParmEntryToBatch(m_pParamBuf,
+                                       CAM_INTF_PARM_HDR_NEED_1X,
+                                       sizeof(m_bHDR1xFrameEnabled),
+                                       &m_bHDR1xFrameEnabled);
             }
 
             rc = setSceneMode(str);
@@ -4249,7 +4260,6 @@ int32_t QCameraParameters::initDefaultParameters()
     set(KEY_QC_SUPPORTED_SCENE_DETECT, onOffValues);
     setSceneDetect(VALUE_OFF);
     m_bHDREnabled = false;
-    m_bHDR1xFrameEnabled = false;
 
     m_bHDRThumbnailProcessNeeded = false;
     m_bHDR1xExtraBufferNeeded = true;
