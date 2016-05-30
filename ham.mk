@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8974
+    camera.msm8974 \
+    Snap
 
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
