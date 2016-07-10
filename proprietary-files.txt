@@ -163,6 +163,9 @@ etc/keymaster.b03:vendor/firmware/keymaster/keymaster.b03
 etc/keymaster.flist:vendor/firmware/keymaster/keymaster.flist
 etc/keymaster.mdt:vendor/firmware/keymaster/keymaster.mdt
 
+# HVDCP (QuickCharge-2.0)
+bin/hvdcp:vendor/bin/hvdcp
+
 # Media
 vendor/lib/libHevcSwDecoder.so
 vendor/lib/libOmxAacDec.so
