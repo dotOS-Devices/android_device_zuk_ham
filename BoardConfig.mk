@@ -80,6 +80,10 @@ BOARD_USES_ALSA_AUDIO 				:= true
 USE_XML_AUDIO_POLICY_CONF                  	:= 1
 BOARD_SUPPORTS_SOUND_TRIGGER 			:= true
 
+# Bionic
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/bin/thermal-engine|libshims_thermal.so
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH 				:= true
 BOARD_HAVE_BLUETOOTH_QCOM 			:= true

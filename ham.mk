@@ -197,6 +197,9 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+PRODUCT_PACKAGES += \
+    libshims_thermal
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
