@@ -101,6 +101,16 @@ PRODUCT_PACKAGES += \
     camera.msm8974 \
     Snap
 
+# Camera configuration
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1 \
+    camera.disable_zsl_mode=1 \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
+# Boot animation
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
@@ -201,9 +211,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false
 
-# Power
+
+# Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
+    android.hardware.power@1.0-impl \
     power.msm8974
 
 # Sensors
@@ -305,9 +316,6 @@ PRODUCT_PACKAGES += \
 # Enable Bluetooth HFP
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
 
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
