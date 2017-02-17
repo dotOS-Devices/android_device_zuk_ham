@@ -182,8 +182,7 @@ protected:
 // framework. They are allocated from /dev/ion or gralloc.
 class QCameraVideoMemory : public QCameraStreamMemory {
 public:
-    QCameraVideoMemory(camera_request_memory getMemory,
-            void* cbCookie, bool cached);
+    QCameraVideoMemory(camera_request_memory getMemory, void* cbCookie, bool cached);
     virtual ~QCameraVideoMemory();
 
     virtual int allocate(int count, int size);

@@ -1688,6 +1688,10 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(cam_stream_type_t st
             }
             ALOGD("%s: vidoe buf using cached memory = %d", __func__, bCachedMem);
             QCameraVideoMemory *videoMemory = new QCameraVideoMemory(mGetMemory, mCallbackCookie, bCachedMem);
+            int usage = 0;
+            cam_format_t fmt;
+            mParameters.getStreamFormat(CAM_STREAM_TYPE_VIDEO,fmt);
+            videoMemory->setVideoInfo(usage, fmt);
             mem = videoMemory;
             mVideoMem = videoMemory;
         }
