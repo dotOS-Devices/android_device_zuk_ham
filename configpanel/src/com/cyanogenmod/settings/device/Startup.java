@@ -33,7 +33,57 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
-        if (cyanogenmod.content.Intent.ACTION_INITIALIZE_CM_HARDWARE.equals(action)) {
+        if (Intent.ACTION_BOOT_COMPLETED.equals(action)
+                || Intent.ACTION_PRE_BOOT_COMPLETED.equals(action)) {
+            // Disable touchscreen gesture settings if needed
+            if (!hasTouchscreenGestures()) {
+                disableComponent(context, TouchscreenGestureSettings.class.getName());
+            } else {
+                enableComponent(context, TouchscreenGestureSettings.class.getName());
+                // Restore nodes to saved preference values
+                for (String pref : Constants.sGesturePrefKeys) {
+                    boolean value = Constants.isPreferenceEnabled(context, pref);
+                    String node = Constants.sBooleanNodePreferenceMap.get(pref);
+                    // If music gestures are toggled, update values of all music gesture proc files
+                    if (pref.equals(Constants.TOUCHSCREEN_MUSIC_GESTURE_KEY)) {
+                        for (String music_nodes: Constants.TOUCHSCREEN_MUSIC_GESTURES_ARRAY) {
+                            if (!FileUtils.writeLine(music_nodes, value ? "1" : "0")) {
+                                Log.w(TAG, "Write to node " + music_nodes +
+                                    " failed while restoring saved preference values");
+                            }
+                        }
+                    }
+                    else if (!FileUtils.writeLine(node, value ? "1" : "0")) {
+                        Log.w(TAG, "Write to node " + node +
+                            " failed while restoring saved preference values");
+                    }
+                }
+            }
+
+            // Disable backtouch settings if needed
+            if (hasGestureService(context)) {
+                disableComponent(context, GesturePadSettings.class.getName());
+            } else {
+                IBinder b = ServiceManager.getService("gesture");
+                IGestureService sInstance = IGestureService.Stub.asInterface(b);
+
+                boolean value = Constants.isPreferenceEnabled(context,
+                        Constants.TOUCHPAD_STATE_KEY);
+                String node = Constants.sBooleanNodePreferenceMap.get(
+                        Constants.TOUCHPAD_STATE_KEY);
+                if (!FileUtils.writeLine(node, value ? "1" : "0")) {
+                    Log.w(TAG, "Write to node " + node +
+                            " failed while restoring touchpad enable state");
+                }
+
+                // Set longPress event
+                toggleLongPress(context, sInstance, Constants.isPreferenceEnabled(
+                        context, Constants.TOUCHPAD_LONGPRESS_KEY));
+
+                // Set doubleTap event
+                toggleDoubleTap(context, sInstance, Constants.isPreferenceEnabled(
+                        context, Constants.TOUCHPAD_DOUBLETAP_KEY));
+            }
 
             // Disable button settings if needed
             if (!hasButtonProcs()) {
@@ -58,6 +108,55 @@ public class Startup extends BroadcastReceiver {
                 }
             }
         }
+    }
+
+    public static void toggleDoubleTap(Context context, IGestureService gestureService,
+            boolean enable) {
+        PendingIntent pendingIntent = null;
+        if (enable) {
+            Intent doubleTapIntent = new Intent("cyanogenmod.intent.action.GESTURE_CAMERA", null);
+            pendingIntent = PendingIntent.getBroadcastAsUser(
+                    context, 0, doubleTapIntent, 0, UserHandle.CURRENT);
+        }
+        try {
+            System.out.println("toggleDoubleTap : " + pendingIntent);
+            gestureService.setOnDoubleClickPendingIntent(pendingIntent);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void toggleLongPress(Context context, IGestureService gestureService,
+            boolean enable) {
+        PendingIntent pendingIntent = null;
+        if (enable) {
+            Intent longPressIntent = new Intent(Intent.ACTION_CAMERA_BUTTON, null);
+            pendingIntent = PendingIntent.getBroadcastAsUser(
+                    context, 0, longPressIntent, 0, UserHandle.CURRENT);
+        }
+        try {
+            System.out.println("toggleLongPress : " + pendingIntent);
+            gestureService.setOnLongPressPendingIntent(pendingIntent);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendInputEvent(InputEvent event) {
+        InputManager inputManager = InputManager.getInstance();
+        inputManager.injectInputEvent(event,
+                InputManager.INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH);
+    }
+
+    static boolean hasGestureService(Context context) {
+        return !context.getResources().getBoolean(
+                com.android.internal.R.bool.config_enableGestureService);
+    }
+
+    static  boolean hasTouchscreenGestures() {
+        return new File(Constants.TOUCHSCREEN_CAMERA_NODE).exists() &&
+            new File(Constants.TOUCHSCREEN_DOUBLE_SWIPE_NODE).exists() &&
+            new File(Constants.TOUCHSCREEN_FLASHLIGHT_NODE).exists();
     }
 
     static boolean hasButtonProcs() {
