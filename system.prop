@@ -31,6 +31,7 @@ persist.radio.multisim.config=dsds
 # bluetooth
 qcom.bluetooth.soc=smd
 bluetooth.hfp.client=1
+persist.bt.enableAptXHD=true
 ro.bluetooth.hfp.ver=1.7
 ro.qualcomm.bt.hci_transport=smd
 

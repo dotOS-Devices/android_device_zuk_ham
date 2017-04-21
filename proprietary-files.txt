@@ -17,6 +17,9 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/lib/libbtnv.so
+vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXHD-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXScheduler.so
 
 # Camera
 vendor/bin/mm-qcamera-daemon
