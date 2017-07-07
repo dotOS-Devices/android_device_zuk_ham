@@ -14,5 +14,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-LOC_PATH := $(call my-dir)
-include $(call first-makefiles-under,$(LOC_PATH))
+
+include $(call first-makefiles-under,$(call my-dir))
