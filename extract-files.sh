@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2016 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -55,7 +54,6 @@ fi
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
-extract "$MY_DIR"/proprietary-files-qc.txt "$SRC"
-extract "$MY_DIR"/proprietary-files-zuk.txt "$SRC"
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh
