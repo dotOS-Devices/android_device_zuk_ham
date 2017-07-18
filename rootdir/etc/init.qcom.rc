@@ -190,6 +190,9 @@ on post-fs-data
     # Bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
+    # Create directory for tftp
+    mkdir /data/vendor/tombstones 0771 system system
+
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
