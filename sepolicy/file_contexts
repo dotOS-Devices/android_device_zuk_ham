@@ -12,6 +12,9 @@
 /sys/devices/virtual/touch/tp_dev/key_enable    u:object_r:touchpanel_sysfs:s0
 /sys/devices/gpio_keys.83/disabled_keys         u:object_r:touchpanel_sysfs:s0
 /sys/devices/virtual/touch/tp_dev/key_reverse   u:object_r:touchpanel_sysfs:s0
+/sys/devices/virtual/graphics/fb([0-2])+/hpd                                      u:object_r:sysfs_surfaceflinger:s0
+/sys/devices/virtual/graphics/fb([0-2])+/vendor_name                              u:object_r:sysfs_surfaceflinger:s0
+/sys/devices/virtual/graphics/fb([0-2])+/product_description                      u:object_r:sysfs_surfaceflinger:s0
 
 # Fingerprint
 /persist/fingerprintapp(/.*)?                                      u:object_r:fingerprint_persist_file:s0
