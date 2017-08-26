@@ -82,6 +82,7 @@ BOARD_SUPPORTS_SOUND_TRIGGER 			:= true
 
 # Bionic
 TARGET_LD_SHIM_LIBS := \
+    /system/vendor/bin/mpdecision|libshims_atomic.so \
     /system/vendor/bin/thermal-engine|libshims_thermal.so
 
 # Bluetooth
