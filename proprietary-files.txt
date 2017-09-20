@@ -116,6 +116,9 @@ vendor/lib/libssd.so
 vendor/lib/hw/fingerprint.msm8974.so
 vendor/lib/lib_fpc_tac_shared.so
 
+# Widevine
+vendor/lib/mediadrm/libwvdrmengine.so
+
 # GPS
 vendor/bin/loc_launcher
 vendor/lib/libloc_api_v02.so
@@ -258,9 +261,6 @@ vendor/firmware/venus.b03
 vendor/firmware/venus.b04
 vendor/firmware/venus.mbn
 vendor/firmware/venus.mdt
-
-# Widevine - kanged from Angler OPM3.171019.019
-vendor/lib/mediadrm/libwvdrmengine.so|fb276a490ee3d630f9ba5ba751b00397a2f6dca0
 
 # WiFi
 -vendor/lib/libwpa_qmi_eap_proxy.so
