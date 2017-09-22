@@ -138,7 +138,7 @@ $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8974
+    android.hardware.light@2.0-service.ham
 
 # IPC Security config
 PRODUCT_COPY_FILES += \
