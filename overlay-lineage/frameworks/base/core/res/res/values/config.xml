@@ -50,7 +50,4 @@
          config to 7. -->
     <!--integer name="config_deviceHardwareWakeKeys">65</integer-->
 
-    <!-- Enable blur support -->
-    <!--bool name="config_uiBlurEnabled">true</bool-->
-
 </resources>
