@@ -184,10 +184,6 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
     power.msm8974
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_ham
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
