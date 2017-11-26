@@ -111,6 +111,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DeviceSettings
 
+# VNDK-SP:
+PRODUCT_PACKAGES += \
+   vndk-sp
+
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
