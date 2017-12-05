@@ -21,6 +21,7 @@ $(call inherit-product, device/zuk/ham/ham.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/validus/config/common_full_phone.mk)
+$(call inherit-product, vendor/validus/config/caf_fw.mk)
 
 PRODUCT_NAME := validus_ham
 PRODUCT_DEVICE := ham
