@@ -119,6 +119,11 @@ vendor/lib/lib_fpc_tac_shared.so
 # Widevine
 vendor/lib/mediadrm/libwvdrmengine.so
 
+# FM
+-lib/vendor.qti.hardware.fm@1.0.so
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
+
 # GPS
 vendor/bin/loc_launcher
 vendor/lib/libloc_api_v02.so
