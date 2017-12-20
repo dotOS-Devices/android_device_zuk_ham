@@ -95,6 +95,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE :="/sys/devices/virtual/touch/tp_dev/gesture_on"
 
+
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 20971520
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 134217728
@@ -201,7 +202,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 ADD_RADIO_FILES := true
 
 # Use HW crypto for ODE
-TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_DISK_ENCRYPTION 	 := true
+TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
