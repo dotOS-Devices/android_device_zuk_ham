@@ -96,7 +96,7 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-still/jpeg
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
-LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+LOCAL_ADDITIONAL_DEPENDENCIES := INSTALLED_KERNEL_HEADERS
 
 LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/libgralloc \
         $(call project-path-for,qcom-display)/libgenlock \
