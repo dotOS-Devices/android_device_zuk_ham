@@ -62,3 +62,7 @@ ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 # Google assistant
 ro.opa.eligible_device=true
 
+# Qualcomm® aptX™
+persist.bt.enableAptXHD=true
+persist.service.btui.use_aptx=1
+persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
