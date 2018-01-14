@@ -203,8 +203,16 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
+<<<<<<< HEAD
 # ANT+ - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this
 #BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+=======
+# Render
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
+USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+>>>>>>> bada10a... shamu: Enable SF_START_GRAPHICS_ALLOCATOR_SERVICE
 
 #Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
