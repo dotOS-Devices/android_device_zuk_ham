@@ -2,7 +2,24 @@
 # system.prop for ham
 #
 
-ro.sf.lcd_density=480
+ro.sf.lcd_density=420
+persist.hwc.mdpcomp.enable=true
+ro.opengles.version=196608
+
+# GPS
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1
+
+# Network
+persist.data.netmgrd.qos.enable=true
+persist.data.tcpackprio.enable=true
+ro.data.large_tcp_window_size=true
+
+# Perf
+ro.qualcomm.perf.cores_online=2
+ro.vendor.extension_library=libqti-perfd-client.so
+
+# Radio
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 persist.radio.add_power_save=1
 persist.radio.apm_sim_not_pwdn=1
