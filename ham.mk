@@ -91,7 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl \
     libbt-vendor
 
 # Camera
@@ -132,6 +131,9 @@ PRODUCT_PACKAGES += \
 # VNDK-SP:
 PRODUCT_PACKAGES += \
    vndk-sp
+
+# Treble packages
+ $(call inherit-product, device/zuk/ham/treble.mk)
 
 # Graphics
 PRODUCT_PACKAGES += \
