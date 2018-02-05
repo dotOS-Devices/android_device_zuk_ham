@@ -53,4 +53,7 @@
          is the percentage of camera preview height/width to scale to. -->
     <integer name="panorama_frame_size_reduction">100</integer>
 
+    <!-- Enable support for camera api v2 -->
+    <bool name="support_camera_api_v2">true</bool>
+
 </resources>
