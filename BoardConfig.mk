@@ -109,6 +109,9 @@ BOARD_OEMIMAGE_PARTITION_SIZE      := 133169152
 # Use mke2fs instead of make_ext4fs
 TARGET_USES_MKE2FS := true
 
+#config
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
+
 # Graphics
 USE_OPENGL_RENDERER := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
