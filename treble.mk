@@ -41,6 +41,10 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     fingerprint.msm8974 
 
+# OMX
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-impl 
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl 
