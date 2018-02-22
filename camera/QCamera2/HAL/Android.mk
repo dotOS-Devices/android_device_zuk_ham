@@ -77,6 +77,7 @@ LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-util
 LOCAL_STATIC_LIBRARIES := libarect
 
 LOCAL_HEADER_LIBRARIES := libnativebase_headers
+LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
