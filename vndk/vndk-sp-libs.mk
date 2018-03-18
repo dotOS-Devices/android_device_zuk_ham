@@ -4,6 +4,7 @@ VNDK_SP_LIBRARIES := \
     android.hardware.graphics.common@1.0 \
     android.hardware.renderscript@1.0 \
     android.hardware.neuralnetworks@1.0 \
+    android.hardware.media.omx@1.0-impl \
     android.hidl.memory@1.0 \
     libRSCpuRef \
     libRSDriver \
