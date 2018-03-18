@@ -78,6 +78,10 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.1-service-hvx
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
