@@ -279,10 +279,13 @@ PRODUCT_PACKAGES += \
     libxml2
 
 # ANT+
-#PRODUCT_PACKAGES += \
-#    AntHalService \
-#    com.dsi.ant.antradio_library \
-#    libantradio
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
+
+PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Enable Bluetooth HFP
 PRODUCT_PROPERTY_OVERRIDES += \
