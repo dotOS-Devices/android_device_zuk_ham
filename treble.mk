@@ -37,20 +37,24 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprint.msm8974 
+    fingerprint.msm8974
 
 # OMX
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-impl 
+    android.hardware.media.omx@1.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl 
+    android.hardware.light@2.0-impl
 
 # GNSS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
     android.hardware.gnss@1.0-service-qti
+
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.0-service-hvx
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
