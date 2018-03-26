@@ -8,7 +8,8 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
         -Wno-error=format \
-        -Wno-error=sign-compare
+        -Wno-error=sign-compare \
+        -Wno-error=unused-parameter
 
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
@@ -47,7 +48,7 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include \
         frameworks/native/include/media/openmax \
-        frameworks/native/libs/nativewindow/include \ 
+        frameworks/native/libs/nativewindow/include \
         $(call project-path-for,qcom-display)/libgralloc \
         $(call project-path-for,qcom-media)/libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
