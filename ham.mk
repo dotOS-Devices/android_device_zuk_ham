@@ -97,7 +97,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
-    camera.msm8974 
+    camera.msm8974 \
     libmmjpeg_interface \
     mm-jpeg-interface-test \
     mm-qcamera-app \
@@ -180,9 +180,9 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.manager@1.0-java
+    android.hidl.manager@1.0-java \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0
 
 # IPC Security config
 PRODUCT_COPY_FILES += \
@@ -293,7 +293,7 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-RODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$system/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Net
