@@ -53,8 +53,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/vendor/etc/audio_platform_info.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio.effect@2.0-impl \
     audio.a2dp.default \
     audio_amplifier.msm8974 \
     audio_policy.msm8974 \
@@ -97,7 +95,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
-    camera.msm8974 
+    camera.msm8974 \
     libmmjpeg_interface \
     mm-jpeg-interface-test \
     mm-qcamera-app \
@@ -117,10 +115,6 @@ TARGET_BOOTANIMATION_HALF_RES := true
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
-
 #Doze
 PRODUCT_PACKAGES += \
     HamDoze
@@ -138,10 +132,6 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
     copybit.msm8974 \
     gralloc.msm8974 \
     hwcomposer.msm8974 \
@@ -180,9 +170,9 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.manager@1.0-java
+    android.hidl.manager@1.0-java \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0
 
 # IPC Security config
 PRODUCT_COPY_FILES += \
@@ -264,7 +254,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
     libwpa_client \
     hostapd \
     wificond \
