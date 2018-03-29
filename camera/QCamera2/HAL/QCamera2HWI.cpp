@@ -1318,54 +1318,6 @@ int QCamera2HardwareInterface::initCapabilities(int cameraId,mm_camera_vtbl_t *c
     memcpy(gCamCapability[cameraId], DATA_PTR(capabilityHeap,0),
                                         sizeof(cam_capability_t));
 
-    // Re-order HDR exposure sequence to prevent screen flash on last frame
-    gCamCapability[cameraId]->hdr_bracketing_setting.exp_val.values[0] = -6;
-    gCamCapability[cameraId]->hdr_bracketing_setting.exp_val.values[1] = 6;
-    gCamCapability[cameraId]->hdr_bracketing_setting.exp_val.values[2] = 0;
-
-    // Inject modified video/preview size tables
-    if (gCamCapability[cameraId]->position == CAM_POSITION_BACK) {
-        for (i = 0; i < CAM0_PIC_TBL_SIZE; i++)
-            gCamCapability[cameraId]->picture_sizes_tbl[i] = new_pic_sizes_cam0[i];
-        gCamCapability[cameraId]->picture_sizes_tbl_cnt = CAM0_PIC_TBL_SIZE;
-
-        for (i = 0; i < CAM0_VID_TBL_SIZE; i++)
-            gCamCapability[cameraId]->video_sizes_tbl[i] = new_vid_sizes_cam0[i];
-        gCamCapability[cameraId]->video_sizes_tbl_cnt = CAM0_VID_TBL_SIZE;
-
-        for (i = 0; i < CAM0_VID_TBL_SIZE; i++)
-            gCamCapability[cameraId]->livesnapshot_sizes_tbl[i] = new_vid_sizes_cam0[i];
-        gCamCapability[cameraId]->livesnapshot_sizes_tbl_cnt = CAM0_VID_TBL_SIZE;
-
-        for (i = 0; i < CAM0_PRVW_TBL_SIZE; i++)
-            gCamCapability[cameraId]->preview_sizes_tbl[i] = new_prvw_sizes_cam0[i];
-        gCamCapability[cameraId]->preview_sizes_tbl_cnt = CAM0_PRVW_TBL_SIZE;
-
-        // Add 90FPS HFR mode up to 720p
-        x = CAM_HFR_MODE_90FPS;
-        gCamCapability[cameraId]->hfr_tbl[x].mode = (cam_hfr_mode_t)x;
-        gCamCapability[cameraId]->hfr_tbl[x].dim = (cam_dimension_t){1280, 720};
-        gCamCapability[cameraId]->hfr_tbl[x].frame_skip = 0;
-        gCamCapability[cameraId]->hfr_tbl[x].livesnapshot_sizes_tbl_cnt =
-                                        gCamCapability[cameraId]->hfr_tbl[CAM_HFR_MODE_120FPS].livesnapshot_sizes_tbl_cnt;
-        for (i = 0; i < gCamCapability[cameraId]->hfr_tbl[x].livesnapshot_sizes_tbl_cnt; i++)
-            gCamCapability[cameraId]->hfr_tbl[x].livesnapshot_sizes_tbl[i] =
-                                        gCamCapability[cameraId]->hfr_tbl[CAM_HFR_MODE_60FPS].livesnapshot_sizes_tbl[i];
-        gCamCapability[cameraId]->hfr_tbl_cnt = 3;
-    } else if (gCamCapability[cameraId]->position == CAM_POSITION_FRONT) {
-        for (i = 0; i < CAM1_VID_TBL_SIZE; i++)
-            gCamCapability[cameraId]->video_sizes_tbl[i] = new_vid_sizes_cam1[i];
-        gCamCapability[cameraId]->video_sizes_tbl_cnt = CAM1_VID_TBL_SIZE;
-
-        for (i = 0; i < CAM1_PRVW_TBL_SIZE; i++)
-            gCamCapability[cameraId]->preview_sizes_tbl[i] = new_prvw_sizes_cam1[i];
-        gCamCapability[cameraId]->preview_sizes_tbl_cnt = CAM1_PRVW_TBL_SIZE;
-
-        for (i = 0; i < CAM1_VID_TBL_SIZE; i++)
-            gCamCapability[cameraId]->livesnapshot_sizes_tbl[i] = new_vid_sizes_cam1[i];
-        gCamCapability[cameraId]->livesnapshot_sizes_tbl_cnt = CAM1_VID_TBL_SIZE;
-    }
-
     //copy the preview sizes and video sizes lists because they
     //might be changed later
     copyList(gCamCapability[cameraId]->preview_sizes_tbl, savedSizes[cameraId].all_preview_sizes,
