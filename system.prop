@@ -78,3 +78,6 @@ ro.debuggable=1
 persist.sys.usb.config=adb
 ro.secure=0
 ro.adb.secure=0
+
+#treble
+ro.treble.enabled=true
