@@ -3,17 +3,10 @@
 #
 
 ro.sf.lcd_density=420
-persist.hwc.mdpcomp.enable=true
-ro.opengles.version=196608
 
 # GPS
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
-
-# Network
-persist.data.netmgrd.qos.enable=true
-persist.data.tcpackprio.enable=true
-ro.data.large_tcp_window_size=true
 
 # Perf
 ro.qualcomm.perf.cores_online=2
@@ -45,6 +38,20 @@ ro.qualcomm.bluetooth.nap=true
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.pbap=true
 
+# Camera 
+persist.camera.isp.clock.optmz=0
+vidc.enc.dcvs.extra-buff-count=2
+media.camera.ts.monotonic=1
+camera.display.umax=1920x1080
+camera.display.lmax=1280x720
+persist.camera.stats.test=5
+camera.lowpower.record.enable=1
+persist.camera.gyro.disable=0
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+persist.camera.HAL3.enabled=1
+
+# Network
+persist.data.qmi.adb_logmask=0
 
 # sensors
 ro.qc.sdk.camera.facialproc=true
@@ -69,3 +76,13 @@ ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 # Google assistant
 ro.opa.eligible_device=true
 
+# Qualcomm® aptX™
+persist.bt.enableAptXHD=true
+persist.service.btui.use_aptx=1
+persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
+
+# ADB
+ro.debuggable=1
+persist.sys.usb.config=adb
+ro.secure=0
+ro.adb.secure=0

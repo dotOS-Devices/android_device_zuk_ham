@@ -125,6 +125,8 @@ const char QCameraParameters::KEY_QC_CDS_MODE[] = "cds-mode";
 const char QCameraParameters::KEY_QC_VIDEO_ROTATION[] = "video-rotation";
 const char QCameraParameters::KEY_QC_AF_BRACKET[] = "af-bracket";
 const char QCameraParameters::KEY_QC_SUPPORTED_AF_BRACKET_MODES[] = "af-bracket-values";
+const char QCameraParameters::KEY_QC_MORPHO_HDR[] = "morpho-hdr";
+const char QCameraParameters::KEY_QC_SUPPORTED_MORPHO_HDR_MODES[] = "morpho-hdr-values";
 const char QCameraParameters::KEY_QC_CHROMA_FLASH[] = "chroma-flash";
 const char QCameraParameters::KEY_QC_SUPPORTED_CHROMA_FLASH_MODES[] = "chroma-flash-values";
 const char QCameraParameters::KEY_QC_OPTI_ZOOM[] = "opti-zoom";
@@ -1808,6 +1810,7 @@ int32_t QCameraParameters::setFocusMode(const QCameraParameters& params)
     const char *str = params.get(KEY_FOCUS_MODE);
     const char *prev_str = get(KEY_FOCUS_MODE);
 
+#if 0 // Allow frontend to control scene focus mode
     //Find whether scene mode is Auto or not. We should set focus mode set by app
     //only in Auto scene mode.  For other scene modes, Focus mode corresponding to
     //a scene is decided and set in backend. In HAL, it is taken care in setScenePreferences.
@@ -1815,10 +1818,15 @@ int32_t QCameraParameters::setFocusMode(const QCameraParameters& params)
     const char *scene_str = params.get(KEY_SCENE_MODE);
     if(!strcmp(scene_str, SCENE_MODE_AUTO))
         isAutoSceneMode = TRUE;
+#endif
 
     if (str != NULL) {
         if (prev_str == NULL ||
+#if 0 // Allow frontend to control scene focus mode
             (strcmp(str, prev_str) != 0 && isAutoSceneMode)){
+#else
+            (strcmp(str, prev_str) != 0)){
+#endif
                 rc = setFocusMode(str);
         }
     }
@@ -3917,8 +3925,8 @@ int32_t QCameraParameters::initDefaultParameters()
     set(KEY_QC_RAW_PICUTRE_SIZE, raw_size_str);
 
     //set default jpeg quality and thumbnail quality
-    set(KEY_JPEG_QUALITY, 85);
-    set(KEY_JPEG_THUMBNAIL_QUALITY, 85);
+    set(KEY_JPEG_QUALITY, 100);
+    set(KEY_JPEG_THUMBNAIL_QUALITY, 100);
 
     // Set FPS ranges
     if (m_pCapability->fps_ranges_tbl_cnt > 0 &&

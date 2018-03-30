@@ -54,7 +54,7 @@ TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 vmalloc=480M androidboot.selinux=permissive
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8974
-TARGET_KERNEL_CONFIG := lineageos_k9_defconfig
+TARGET_KERNEL_CONFIG := StarCity_defconfig
 
 # Enable DIAG on eng builds
 ifeq ($(TARGET_BUILD_VARIANT),eng)
@@ -86,14 +86,16 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # Tap to wake
-TARGET_TAP_TO_WAKE_NODE := /sys/devices/virtual/touch/tp_dev/gesture_on
+TARGET_TAP_TO_WAKE_NODE :="/sys/devices/virtual/touch/tp_dev/gesture_on"
+
+# Extended filesystem support
+TARGET_EXFAT_DRIVER := exfat
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 20971520
@@ -108,6 +110,9 @@ BOARD_OEMIMAGE_PARTITION_SIZE      := 133169152
 
 # Use mke2fs instead of make_ext4fs
 TARGET_USES_MKE2FS := true
+
+#config
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -129,8 +134,9 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# HIDL
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+# Mainfest
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/compatibility_matrix.xml
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -198,21 +204,17 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 ADD_RADIO_FILES := true
 
 # Use HW crypto for ODE
-TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_DISK_ENCRYPTION 	 := true
+TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-<<<<<<< HEAD
 # ANT+ - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this
-#BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
-=======
-# Render
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
-USE_OPENGL_RENDERER := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
->>>>>>> bada10a... shamu: Enable SF_START_GRAPHICS_ALLOCATOR_SERVICE
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
+# Missing Dependencies
+ALLOW_MISSING_DEPENDENCIES=true
 
 #Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)

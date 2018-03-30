@@ -1,11 +1,10 @@
 VNDK_SP_LIBRARIES := \
     android.hardware.graphics.allocator@2.0 \
     android.hardware.graphics.mapper@2.0 \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.common@1.0 \
     android.hardware.renderscript@1.0 \
-    android.hardware.memtrack@1.0-impl \
+    android.hardware.neuralnetworks@1.0 \
+    android.hardware.media.omx@1.0-impl \
     android.hidl.memory@1.0 \
     libRSCpuRef \
     libRSDriver \
@@ -18,6 +17,7 @@ VNDK_SP_LIBRARIES := \
     libcompiler_rt \
     libcutils \
     libft2 \
+    libgui \
     libhardware \
     libhidlbase \
     libhidlmemory \
@@ -26,5 +26,10 @@ VNDK_SP_LIBRARIES := \
     libion \
     liblzma \
     libpng \
+    libstagefright_soft_mpeg2dec \
+    libstagefright_soft_avcdec \
+    libstagefright_omx \
     libunwind \
-    libutils
+    libutils \
+    libaudioutils \
+    libmedia_helper

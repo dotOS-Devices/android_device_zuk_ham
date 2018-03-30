@@ -8,7 +8,8 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
         -Wno-error=format \
-        -Wno-error=sign-compare
+        -Wno-error=sign-compare \
+        -Wno-error=unused-parameter
 
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
@@ -46,7 +47,9 @@ LOCAL_CFLAGS += -DDEFAULT_ZSL_MODE_ON
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include \
+        frameworks/native/libs/arect/include \
         frameworks/native/include/media/openmax \
+        frameworks/native/libs/nativewindow/include \
         $(call project-path-for,qcom-display)/libgralloc \
         $(call project-path-for,qcom-media)/libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
@@ -73,6 +76,9 @@ LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
 LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-utils android.hardware.graphics.bufferqueue@1.0
 LOCAL_STATIC_LIBRARIES := libarect
+
+LOCAL_HEADER_LIBRARIES := libnativebase_headers
+LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
