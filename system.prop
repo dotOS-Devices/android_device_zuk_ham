@@ -38,6 +38,17 @@ ro.qualcomm.bluetooth.nap=true
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.pbap=true
 
+# Camera 
+persist.camera.isp.clock.optmz=0
+vidc.enc.dcvs.extra-buff-count=2
+media.camera.ts.monotonic=1
+camera.display.umax=1920x1080
+camera.display.lmax=1280x720
+persist.camera.stats.test=5
+camera.lowpower.record.enable=1
+persist.camera.gyro.disable=0
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+persist.camera.HAL3.enabled=1
 
 # Network
 persist.data.qmi.adb_logmask=0
@@ -69,3 +80,9 @@ ro.opa.eligible_device=true
 persist.bt.enableAptXHD=true
 persist.service.btui.use_aptx=1
 persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
+
+# ADB
+ro.debuggable=1
+persist.sys.usb.config=adb
+ro.secure=0
+ro.adb.secure=0
