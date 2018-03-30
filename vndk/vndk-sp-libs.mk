@@ -29,4 +29,6 @@ VNDK_SP_LIBRARIES := \
     libstagefright_soft_avcdec \
     libstagefright_omx \
     libunwind \
-    libutils
+    libutils \
+    libaudioutils \
+    libmedia_helper
