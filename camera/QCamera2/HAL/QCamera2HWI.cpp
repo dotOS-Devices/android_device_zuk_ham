@@ -411,11 +411,24 @@ int QCamera2HardwareInterface::store_meta_data_in_buffers(
 int QCamera2HardwareInterface::start_recording(struct camera_device *device)
 {
     int ret = NO_ERROR;
+    int width, height;
     QCamera2HardwareInterface *hw =
         reinterpret_cast<QCamera2HardwareInterface *>(device->priv);
     if (!hw) {
         ALOGE("NULL camera device");
         return BAD_VALUE;
+    }
+    // Configure preview window for 4K
+    hw->mParameters.getVideoSize(&width, &height);
+    if ((width > 1920) && (height > 1080)) {
+        android::CameraParameters params;
+        params.unflatten(android::String8(hw->get_parameters(device)));
+        params.set("preview-size", (width == 3840) ? "3840x2160" : "4096x2160");
+        params.set("preview-format", "nv12-venus");
+        hw->set_parameters(device, strdup(params.flatten().string()));
+        // Restart preview to propagate changes to preview window
+        hw->stop_preview(device);
+        hw->start_preview(device);
     }
     ALOGE("[KPI Perf] %s: E PROFILE_START_RECORDING", __func__);
     hw->lockAPI();
@@ -736,7 +749,20 @@ char* QCamera2HardwareInterface::get_parameters(struct camera_device *device)
     int32_t rc = hw->processAPI(QCAMERA_SM_EVT_GET_PARAMS, NULL);
     if (rc == NO_ERROR) {
         hw->waitAPIResult(QCAMERA_SM_EVT_GET_PARAMS);
-        ret = hw->m_apiResult.params;
+        // Mask nv12-venus to userspace to prevent framework crash
+        if (hw->mParameters.getRecordingHintValue()) {
+            int width, height;
+            hw->mParameters.getVideoSize(&width, &height);
+            if ((width > 1920) && (height > 1080)) {
+                android::CameraParameters params;
+                params.unflatten(android::String8(hw->m_apiResult.params));
+                params.set("preview-format", "yuv420sp");
+                ret = strdup(params.flatten().string());
+            }
+        }
+
+        if (ret == NULL)
+            ret = hw->m_apiResult.params;
     }
     hw->unlockAPI();
 
@@ -1447,13 +1473,8 @@ uint8_t QCamera2HardwareInterface::getBufNumRequired(cam_stream_type_t stream_ty
                 ALOGE("get_min_undequeued_buffer_count  failed");
             }
         } else {
-            //preview window might not be set at this point. So, query directly
-            //from BufferQueue implementation of gralloc buffers.
-#ifdef USE_KK_CODE
-            minUndequeCount = BufferQueue::MIN_UNDEQUEUED_BUFFERS;
-#else
+            //preview window might not be set at this point.
             minUndequeCount = 2;
-#endif
         }
     }
 
@@ -1667,6 +1688,10 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(cam_stream_type_t st
             }
             ALOGD("%s: vidoe buf using cached memory = %d", __func__, bCachedMem);
             QCameraVideoMemory *videoMemory = new QCameraVideoMemory(mGetMemory, mCallbackCookie, bCachedMem);
+            int usage = 0;
+            cam_format_t fmt;
+            mParameters.getStreamFormat(CAM_STREAM_TYPE_VIDEO,fmt);
+            videoMemory->setVideoInfo(usage, fmt);
             mem = videoMemory;
             mVideoMem = videoMemory;
         }
@@ -2093,7 +2118,6 @@ int QCamera2HardwareInterface::stopRecording()
     int rc = stopChannel(QCAMERA_CH_TYPE_VIDEO);
     ALOGD("%s: E", __func__);
     m_cbNotifier.flushVideoNotifications();
-
 #ifdef HAS_MULTIMEDIA_HINTS
     if (m_pPowerModule) {
         if (m_pPowerModule->powerHint) {
