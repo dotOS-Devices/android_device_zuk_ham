@@ -4430,6 +4430,20 @@ int32_t QCameraParameters::init(cam_capability_t *capabilities,
     m_AdjustFPS = adjustFPS;
     m_pTorch = torch;
 
+    if (m_pCapability->position == CAM_POSITION_BACK) {
+        for (i = 0; i < CAM0_PIC_TBL_SIZE; i++)
+            m_pCapability->picture_sizes_tbl[i] = new_pic_sizes_cam0[i];
+        m_pCapability->picture_sizes_tbl_cnt = CAM0_PIC_TBL_SIZE;
+
+        for (i = 0; i < CAM0_VID_TBL_SIZE; i++)
+            m_pCapability->video_sizes_tbl[i] = new_vid_sizes_cam0[i];
+        m_pCapability->video_sizes_tbl_cnt = CAM0_VID_TBL_SIZE;
+
+        for (i = 0; i < CAM0_PRVW_TBL_SIZE; i++)
+            m_pCapability->preview_sizes_tbl[i] = new_prvw_sizes_cam0[i];
+        m_pCapability->preview_sizes_tbl_cnt = CAM0_PRVW_TBL_SIZE;
+    }
+
     //Allocate Set Param Buffer
     m_pParamHeap = new QCameraHeapMemory(QCAMERA_ION_USE_CACHE);
     rc = m_pParamHeap->allocate(1, ONE_MB_OF_PARAMS);
