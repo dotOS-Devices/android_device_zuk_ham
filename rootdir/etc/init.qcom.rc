@@ -325,6 +325,10 @@ on property:ro.data.large_tcp_window_size=true
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
+on property:sys.boot_completed=1
+    # USB fast charge mode
+    write /sys/kernel/fast_charge/force_fast_charge 1
+
 service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
