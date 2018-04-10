@@ -80,7 +80,7 @@
 #define MAX_NUM_STREAMS          8
 #define CHROMATIX_SIZE 21292
 #define COMMONCHROMATIX_SIZE 42044
-#define AFTUNE_SIZE 7200  //sizeof(actuator_driver_params_t) + sizeof(af_algo_tune_parms_t)
+#define AFTUNE_SIZE 4000  //sizeof(actuator_driver_params_t) + sizeof(af_algo_tune_parms_t)
 #define MAX_SCALE_SIZES_CNT 8
 #define MAX_SAMP_DECISION_CNT     64
 
@@ -934,6 +934,10 @@ typedef  struct {
     uint8_t is_meta_valid;
     cam_meta_valid_t meta_valid_params;
 
+    /* Meta valid params */
+    uint8_t is_preview_frame_skip_valid;
+    cam_frame_idx_range_t preview_frame_skip_idx_range;
+
     /*Tuning Data*/
     uint8_t is_tuning_params_valid;
     tuning_params_t tuning_params;
@@ -1177,6 +1181,7 @@ typedef enum {
     CAM_INTF_PARM_FLASH_BRACKETING,
     CAM_INTF_PARM_GET_IMG_PROP,
 
+    CAM_INTF_PARM_UNKNOWN, // Increment CAM_INTF_PARM_MAX by 1
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;
 

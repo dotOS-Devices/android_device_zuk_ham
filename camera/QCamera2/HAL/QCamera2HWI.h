@@ -309,7 +309,7 @@ private:
     int processEvt(qcamera_sm_evt_enum_t evt, void *evt_payload);
     int processSyncEvt(qcamera_sm_evt_enum_t evt, void *evt_payload);
     void lockAPI();
-    void waitAPIResult(qcamera_sm_evt_enum_t api_evt);
+    void waitAPIResult(qcamera_sm_evt_enum_t api_evt, qcamera_api_result_t *apiResult);
     void unlockAPI();
     void signalAPIResult(qcamera_api_result_t *result);
     void signalEvtResult(qcamera_api_result_t *result);
@@ -328,6 +328,7 @@ private:
     int commitParameterChanges();
 
     bool needDebugFps();
+    bool isRegularCapture();
     bool isCACEnabled();
     bool isPreviewRestartEnabled();
     bool isCaptureShutterEnabled();
@@ -507,7 +508,7 @@ private:
     QCameraCbNotifier m_cbNotifier;
     pthread_mutex_t m_lock;
     pthread_cond_t m_cond;
-    qcamera_api_result_t m_apiResult;
+    api_result_list *m_apiResultList;
     QCameraMemoryPool m_memoryPool;
 
     pthread_mutex_t m_evtLock;
@@ -598,6 +599,10 @@ private:
     int32_t mReprocJob;
     int32_t mOutputCount;
     QCameraVideoMemory *mVideoMem;
+    bool mPreviewFrameSkipValid;
+    cam_frame_idx_range_t mPreviewFrameSkipIdxRange;
+    nsecs_t mLastAFScanTime;
+    nsecs_t mLastCaptureTime;
 };
 
 }; // namespace qcamera

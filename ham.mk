@@ -93,12 +93,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libqomx_core \
-    libmmcamera_interface \
     camera.msm8974 \
-    libmmjpeg_interface \
-    mm-jpeg-interface-test \
-    mm-qcamera-app \
     Snap
 
 # Camera configuration

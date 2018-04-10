@@ -8,24 +8,23 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
         -Wno-error=format \
-        -Wno-error=sign-compare \
-        -Wno-error=unused-parameter
+        -Wno-error=sign-compare
 
 LOCAL_SRC_FILES := \
-        QCamera2Factory.cpp \
-        QCamera2Hal.cpp \
-        QCamera2HWI.cpp \
-        QCameraMem.cpp \
-        ../util/QCameraQueue.cpp \
-        ../util/QCameraCmdThread.cpp \
-        QCameraStateMachine.cpp \
-        QCameraChannel.cpp \
-        QCameraStream.cpp \
-	QCameraPostProc.cpp \
-        QCamera2HWICallbacks.cpp \
-        QCameraParameters.cpp \
-        QCameraThermalAdapter.cpp \
-        wrapper/QualcommCamera.cpp
+    QCamera2Factory.cpp \
+    QCamera2Hal.cpp \
+    QCamera2HWI.cpp \
+    QCameraMem.cpp \
+    ../util/QCameraQueue.cpp \
+    ../util/QCameraCmdThread.cpp \
+    QCameraStateMachine.cpp \
+    QCameraChannel.cpp \
+    QCameraStream.cpp \
+    QCameraPostProc.cpp \
+    QCamera2HWICallbacks.cpp \
+    QCameraParameters.cpp \
+    QCameraThermalAdapter.cpp \
+    wrapper/QualcommCamera.cpp
 
 LOCAL_CFLAGS = -Wall -Werror
 
@@ -39,15 +38,11 @@ LOCAL_CFLAGS += -DDISABLE_DEBUG_LOG
 LOCAL_CFLAGS += -DDEFAULT_ZSL_MODE_ON
 LOCAL_CFLAGS += -DDEFAULT_DENOISE_MODE_ON
 
-
-LOCAL_CFLAGS += -DDEFAULT_ZSL_MODE_ON
-
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include \
-        frameworks/native/libs/arect/include \
+	frameworks/native/libs/nativewindow/include \
         frameworks/native/include/media/openmax \
-        frameworks/native/libs/nativewindow/include \
         $(call project-path-for,qcom-display)/libgralloc \
         $(call project-path-for,qcom-media)/libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
@@ -56,11 +51,6 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/wrapper \
         system/media/camera/include
 
-ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/msm8974/libgralloc
-else
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/libgralloc
-endif
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
@@ -71,7 +61,6 @@ LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-util
 LOCAL_STATIC_LIBRARIES := libarect
 
 LOCAL_HEADER_LIBRARIES := libnativebase_headers
-LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
@@ -80,4 +69,3 @@ LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 
-#include $(LOCAL_PATH)/test/Android.mk

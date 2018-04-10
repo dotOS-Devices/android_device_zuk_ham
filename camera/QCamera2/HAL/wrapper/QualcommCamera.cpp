@@ -58,7 +58,7 @@ extern "C" {
 
 
 static hw_module_methods_t camera_module_methods = {
-    open: camera_device_open,
+    .open = camera_device_open,
 };
 
 static hw_module_t camera_common = {
@@ -70,7 +70,7 @@ static hw_module_t camera_common = {
     .author = "Quic on behalf of CAF",
     .methods = &camera_module_methods,
     .dso = NULL,
-    .reserved =  {0},
+    .reserved = {0},
 };
 
 using namespace qcamera;
