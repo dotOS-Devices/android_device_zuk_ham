@@ -102,7 +102,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8974 \
     libstlport \
-    Snap
+    Snap \
+    ParanoidCamera
 
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
