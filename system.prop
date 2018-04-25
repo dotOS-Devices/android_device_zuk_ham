@@ -37,11 +37,6 @@ ro.qualcomm.bluetooth.nap=true
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.pbap=true
 
-# Camera 
-camera.hal1.packagelist=com.skype.raider,com.google.android.talk
-persist.camera.HAL3.enabled=1
-persist.camera.cpp.duplication=false
-
 # Network
 persist.data.qmi.adb_logmask=0
 

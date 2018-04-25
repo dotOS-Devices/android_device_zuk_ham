@@ -93,15 +93,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8974 \
-    Snap
-
-# Camera configuration
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1 \
-    camera.disable_zsl_mode=1 \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
+    camera.msm8974
 
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
