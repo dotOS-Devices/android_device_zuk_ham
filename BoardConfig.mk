@@ -188,10 +188,7 @@ USE_DEVICE_SPECIFIC_LOC_API := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # PowerHAL
-<<<<<<< HEAD
 TARGET_POWERHAL_VARIANT := qcom
-=======
->>>>>>> 846152e1... ham: Build camera dependent modules from sources
 TARGET_HAS_LEGACY_POWER_STATS 	:= true
 TARGET_HAS_NO_WIFI_STATS 	:= true
 TARGET_USES_INTERACTION_BOOST 	:= true
