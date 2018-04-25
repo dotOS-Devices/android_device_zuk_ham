@@ -1,9 +1,6 @@
 # Camera
-/data/cam_socket.*                                 u:object_r:camera_socket:s0
-(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.4-service.ham          u:object_r:hal_camera_default_exec:s0
-
-# Vibrator
-/sys/devices/virtual/timed_output/vibrator/vtg_level   u:object_r:vibeamp_sysfs:s0
+/data/cam_socket.*                                 			       u:object_r:camera_socket:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.4-service.ham          u:object_r:hal_camera_default_exec:s0
 
 # Sensors
 /persist/sns.reg                                u:object_r:sensors_persist_file:s0
@@ -26,12 +23,8 @@
 /dev/fpc1020                                                       u:object_r:fingerprint_device:s0
 
 # FRP
-/dev/block/platform/msm_sdcc.1/by-name/frp               u:object_r:frp_block_device:s0
+/dev/block/bootdevice/by-name/frp               u:object_r:frp_block_device:s0
 
 # TTY
 /dev/ttyGS2                                     u:object_r:tty_device:s0
-/dev/ttyGS1                                     u:object_r:tty_device:s0 
-
-# sys
-/sys/devices/soc/soc:fpc_fpc1020/proximity_state                u:object_r:sysfs_fpc_proximity:s0
-
+/dev/ttyGS1                                     u:object_r:tty_device:s0
