@@ -98,6 +98,9 @@ vendor/lib/libmmqjpeg_codec.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
+vendor/lib/libtrueportrait.so
+vendor/lib/libmmcamera_trueportrait_lib.so
+vendor/lib/libmorpho_group_portrait.so
 
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_1_1.fw
