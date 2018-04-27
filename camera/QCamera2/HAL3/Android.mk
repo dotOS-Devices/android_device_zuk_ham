@@ -11,8 +11,8 @@ LOCAL_SRC_FILES := \
         QCamera3Channel.cpp \
         QCamera3PostProc.cpp \
         QCamera3VendorTags.cpp \
-        ../util/QCameraCmdThread.cpp \
-        ../util/QCameraQueue.cpp
+        ../HAL3/util/QCameraCmdThread.cpp \
+        ../HAL3/util/QCameraQueue.cpp
 
 LOCAL_CFLAGS := -Wall -Werror
 LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS
@@ -23,7 +23,7 @@ LOCAL_CFLAGS += -Wno-unused-parameter
 LOCAL_CLANG_CFLAGS += -Wno-tautological-pointer-compare
 
 LOCAL_C_INCLUDES := \
-        $(LOCAL_PATH)/../stack/common \
+        $(LOCAL_PATH)/../HAL3/common \
         frameworks/native/include/media/openmax \
         frameworks/native/include \
         frameworks/av/include \
@@ -31,7 +31,7 @@ LOCAL_C_INCLUDES := \
         system/media/camera/include \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
         $(LOCAL_PATH)/../../mm-image-codec/qomx_core \
-        $(LOCAL_PATH)/../util
+        $(LOCAL_PATH)/../HAL3/util
 
 LOCAL_C_INCLUDES += \
         $(call project-path-for,qcom-display)/libgralloc
