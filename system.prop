@@ -40,6 +40,9 @@ ro.qualcomm.bluetooth.pbap=true
 # Camera
 persist.camera.HAL3.enabled=1
 
+# DRM
+drm.service.enabled=true
+
 # Network
 persist.data.qmi.adb_logmask=0
 
