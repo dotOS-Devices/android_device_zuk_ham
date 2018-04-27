@@ -2,3 +2,4 @@
 allow hal_power_default touchpanel_sysfs:dir search;
 allow hal_power_default touchpanel_sysfs:file { open write };
 allow hal_power_default sysfs:file { write open };
+

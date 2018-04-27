@@ -37,6 +37,12 @@ ro.qualcomm.bluetooth.nap=true
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.pbap=true
 
+# Camera
+persist.camera.HAL3.enabled=1
+
+# DRM
+drm.service.enabled=true
+
 # Network
 persist.data.qmi.adb_logmask=0
 
@@ -76,3 +82,13 @@ ro.adb.secure=0
 
 #treble
 ro.treble.enabled=true
+
+#low audio flinger standby delay to reduce power consumption
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.audio.flinger_standbytime_ms=300
+
+# Higher fling velocities to smooth scrolling
+# and provide better responsiveness
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.min.fling_velocity=160 \
+ro.max.fling_velocity=20000

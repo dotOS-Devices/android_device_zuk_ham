@@ -281,4 +281,8 @@
         <item>SUPL_MODE=1</item>
         <item>LPP_PROFILE=0</item>
     </string-array>
+
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_enableSmartPixels">true</bool>
+
 </resources>
