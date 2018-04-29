@@ -181,8 +181,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/vendor/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/vendor/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/vendor/etc/media_codecs_google_video.xml \
-    frameworks/av/media/libstagefright/ESDS.cpp:system/vendor/etc/ESDS.cpp \
-    frameworks/av/media/libstagefright/CameraSource.cpp:system/vendor/etc/CameraSource.cpp \
+
     $(LOCAL_PATH)/configs/media_codecs.xml:system/vendor/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:system/vendor/etc/media_profiles_V1_0.xml
@@ -198,7 +197,7 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVdecHevc \
     libOmxVenc \
-    libstagefrighthw \
+    libstagefrighthw
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false \
@@ -207,11 +206,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
-    power-8974\
-PRODUCT_COPY_FILES += \  
-   hardware/qcom/power/android.hardware.power@1.1-service-qti.rc:system/vendor/bin/android.hardware.power@1.1-service-qti.rc
-   hardware/qcom/power/power-8974.c:system/vendor/bin/power-8974.c
+    android.hardware.power@1.0-impl \
+    power.msm8974
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
