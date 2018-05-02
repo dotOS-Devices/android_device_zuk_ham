@@ -204,18 +204,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false \
     camera.disable_treble=true
 
-
-# Power HAL
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
-    power-8974\
-PRODUCT_COPY_FILES += \  
-   hardware/qcom/power/android.hardware.power@1.1-service-qti.rc:system/vendor/bin/android.hardware.power@1.1-service-qti.rc
+# Power
+PRODUCT_COPY_FILES += \
+   hardware/qcom/power/android.hardware.power@1.1-service-qti.rc:system/vendor/bin/android.hardware.power@1.1-service-qti.rc \
    hardware/qcom/power/power-8974.c:system/vendor/bin/power-8974.c
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
+    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
 
 # Keylayouts

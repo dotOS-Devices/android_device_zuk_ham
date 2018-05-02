@@ -74,6 +74,11 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.1-service-qti \
+    power-8974
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
