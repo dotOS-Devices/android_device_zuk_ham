@@ -5,7 +5,7 @@
 ro.sf.lcd_density=420
 
 # GPS
-persist.gps.qc_nlp_in_use=0
+persist.gps.qc_nlp_in_use=1
 ro.gps.agps_provider=1
 
 # Perf
