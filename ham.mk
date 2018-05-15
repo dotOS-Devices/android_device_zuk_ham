@@ -206,7 +206,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false \
-    camera.disable_treble=true
+    camera.disable_treble=true \
+    persist.camera.4k2k.enable=1
 
 # Power
 PRODUCT_COPY_FILES += \
@@ -298,6 +299,9 @@ PRODUCT_PACKAGES += \
 # Enable Bluetooth HFP
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
 
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
