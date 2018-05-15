@@ -4,10 +4,6 @@
 
 ro.sf.lcd_density=420
 
-# GPS
-persist.gps.qc_nlp_in_use=1
-ro.gps.agps_provider=1
-
 # Perf
 ro.qualcomm.perf.cores_online=2
 ro.vendor.extension_library=libqti-perfd-client.so
