@@ -1,17 +1,14 @@
 [
  {
-  "repository": "LLuviaDevices/kernel_cyanogen_msm8974",
+  "remote": "LLuviaDevices",
+  "repository": "kernel_cyanogen_msm8974",
   "target_path": "kernel/cyanogen/msm8974",
-  "branch": "8.x"
+  "branch": "8.1"
  },
  {
-  "repository": "LLuviaDevices/vendor_zuk_ham",
+  "remote": "LLuviaDevices",
+  "repository": "vendor_zuk_ham",
   "target_path": "vendor/zuk",
-  "branch": "8.1.x"
- },
- {
-  "repository": "AOSPA/android_packages_apps_ParanoidCamera",
-  "target_path": "packages/apps/ParanoidCamera",
-  "branch": "oreo-mr1"
+  "branch": "8.1"
  },
 ]
