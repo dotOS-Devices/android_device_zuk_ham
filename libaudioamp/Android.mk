@@ -3,9 +3,10 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES += \
-     hardware/qcom/audio-caf/msm8974/hal/msm8974/ \
-     $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
-		 hardware/libhardware/include
+     $(call project-path-for,qcom-audio)/hal/msm8974/ \
+     $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+
+LOCAL_HEADER_LIBRARIES += libhardware_headers
 
 LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
