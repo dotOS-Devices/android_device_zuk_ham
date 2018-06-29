@@ -23,10 +23,9 @@ PRODUCT_COPY_FILES += device/zuk/ham/apns-full-conf.xml:system/etc/apns-conf.xml
 $(call inherit-product, device/zuk/ham/ham.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lluvia/config/common_full_phone.mk)
-$(call inherit-product, vendor/lluvia/config/caf_fw.mk)
+$(call inherit-product, vendor/dot/config/common.mk)
 
-PRODUCT_NAME := lluvia_ham
+PRODUCT_NAME := dot_ham
 PRODUCT_DEVICE := ham
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_MODEL := ZUK Z1
@@ -41,5 +40,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=Z1 PRODUCT_NAME=ham
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="ham-user 5.1.1 LMY49J YOG4PAS9IG release-keys"
-
 BUILD_FINGERPRINT=ZUK/ham/Z1:5.1.1/LMY49J/YOG4PAS9IG:user/release-keys
