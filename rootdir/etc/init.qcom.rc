@@ -276,6 +276,7 @@ on post-fs-data
 
 on fs
     mount_all ./fstab.qcom
+    swapon_all ./fstab.qcom
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
@@ -451,11 +452,6 @@ service wcnss-service /system/vendor/bin/wcnss_service
     user system
     group system wifi qcom_diag radio
     oneshot
-
-## Properties start here
-on property:sys.boot_completed=1
-    # Enable ZRAM on boot_complete
-    swapon_all ./fstab.qcom
 
 service ppd /system/vendor/bin/mm-pp-daemon
     class late_start
