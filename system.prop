@@ -11,8 +11,8 @@ persist.radio.custom_ecc=1
 # enable multisim
 persist.radio.multisim.config=dsds
 
-# bluetooth
-qcom.bluetooth.soc=smd
+# Bluetooth
+vendor.qcom.bluetooth.soc=pronto
 ro.bluetooth.hfp.ver=1.7
 ro.qualcomm.bt.hci_transport=smd
 ro.bluetooth.dun=false
