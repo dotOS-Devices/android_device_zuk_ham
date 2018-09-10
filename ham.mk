@@ -170,10 +170,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false \
-    camera.disable_treble=true
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/vendor/usr/keylayout/gpio-keys.kl \
