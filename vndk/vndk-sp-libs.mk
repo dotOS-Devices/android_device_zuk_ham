@@ -1,7 +1,9 @@
 VNDK_SP_LIBRARIES := \
     android.hardware.graphics.allocator@2.0 \
     android.hardware.graphics.mapper@2.0 \
+    android.hardware.graphics.mapper@2.1 \
     android.hardware.graphics.common@1.0 \
+    android.hardware.graphics.common@1.1 \
     android.hardware.renderscript@1.0 \
     android.hardware.neuralnetworks@1.0 \
     android.hardware.media.omx@1.0 \
@@ -30,6 +32,9 @@ VNDK_SP_LIBRARIES := \
     libstagefright_soft_avcdec \
     libstagefright_omx \
     libunwind \
+    libunwindstack\
     libutils \
     libaudioutils \
-    libmedia_helper
+    libmedia_helper \
+    libutilscallstack \
+    libdexfile
