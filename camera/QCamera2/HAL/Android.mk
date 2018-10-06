@@ -51,7 +51,6 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/wrapper \
         system/media/camera/include
 
-LOCAL_C_INCLUDES += hardware/qcom/display-caf/msm8974/libgralloc
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
