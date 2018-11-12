@@ -21,15 +21,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk
 $(call inherit-product, device/zuk/ham/ham.mk)
 
 # Inherit some common AEX stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/lluvia/config/common_full_phone.mk)
 
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1080
 
-# AospExtended-BuildType
-EXTENDED_BUILD_TYPE := OFFICIAL
-
-PRODUCT_NAME := aosp_ham
+PRODUCT_NAME := lluvia_ham
 PRODUCT_DEVICE := ham
 PRODUCT_MANUFACTURER := ZUK
 PRODUCT_MODEL := ZUK Z1
