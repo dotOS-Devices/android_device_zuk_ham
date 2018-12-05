@@ -7,12 +7,6 @@ value:2951
 [AID_VENDOR_RFS_SHARED]
 value:2952
 
-[system/vendor/bin/btnvtool]
-mode: 0755
-user: AID_BLUETOOTH
-group: AID_BLUETOOTH
-caps: 0
-
 [firmware/]
 mode: 0771
 user: AID_SYSTEM
