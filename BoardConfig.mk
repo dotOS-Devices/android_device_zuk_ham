@@ -140,6 +140,9 @@ MAX_EGL_CACHE_SIZE 	:= 2048*1024
 # Exclude serif fonts for saving system.img size.
 EXCLUDE_SERIF_FONTS 	:= true
 
+#Netd
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
+
 # HIDL
 DEVICE_MANIFEST_FILE 	:= $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE   	:= $(DEVICE_PATH)/compatibility_matrix.xml
