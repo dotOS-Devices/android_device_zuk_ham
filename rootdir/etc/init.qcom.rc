@@ -323,9 +323,15 @@ on property:sys.qbcharger.enable=false
     stop qbcharger
 
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
+    
+on property:init.svc.media=restarting
+    restart qcamerasvr
+
+on property:init.svc.servicemanager=restarting
+    restart qcamerasvr
 
 service mpdecision /system/vendor/bin/mpdecision --avg_comp
     class main
@@ -369,7 +375,7 @@ service adsprpcd /system/vendor/bin/adsprpcd
     group media
 
 service wcnss-service /system/vendor/bin/wcnss_service
-    class main
+    class late_start
     user system
     group system wifi oem_2950 radio
     oneshot
@@ -415,7 +421,7 @@ on property:persist.sys.qlogd=0
 service ril-daemon1 /system/vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log readproc wakelock sdcard_r sdcard_rw diag
+    group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
