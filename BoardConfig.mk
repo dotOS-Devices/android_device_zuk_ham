@@ -205,6 +205,9 @@ TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED 		:= true
 
+# Wi-Fi Display
+TARGET_USES_AOSP_WFD := true
+
 # Extended filesystem support
 TARGET_EXFAT_DRIVER := sdfat
 
