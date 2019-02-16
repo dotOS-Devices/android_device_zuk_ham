@@ -1,3 +1,3 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lluvia_ham.mk
+    $(LOCAL_DIR)/dot_ham.mk
 
